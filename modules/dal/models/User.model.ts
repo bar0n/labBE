@@ -3,6 +3,8 @@ import * as mongoose from 'mongoose';
 let UserSchema = mongoose.Schema({
     id: Number,
     name: String,
+    email: String,
+    password: String,
     routes: [{type: mongoose.Schema.Types.ObjectId, ref: 'Route'}],
     createdAt: Date // can be auto created http://mongoosejs.com/docs/guide.html#validateBeforeSave
 });

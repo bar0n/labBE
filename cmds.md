@@ -25,6 +25,6 @@ npm install @types/mocha@2.2.32 @types/chai@3.4.34 @types/chai-http@0.0.29 --sav
 
 
 
-nodemon --watch *.ts --exec ts-node ./index.ts
+nodemon --watch *.ts --exec ts-node ./main.ts
 
 

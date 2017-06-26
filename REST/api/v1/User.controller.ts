@@ -1,40 +1,44 @@
 import DAL from "../../../modules/dal/DAL.class";
+import {ObjectSchema} from 'joi';
+
+let Joi = require("joi");
 
 export const usersControllers = {
     getAllUsers: getAllUsers,
     getUserById: getUserById,
     getUserSettingsByUserId: getUserSettingsByUserId,
-    saveUser: saveUser,
-    getUserRoutesByUserId: getUserRoutesByUserId
+    saveUser: saveUser
+
 };
 
 function getAllUsers(req, res, next) {
 
-     DAL.UserModel.find({},(err,docs)=>{
-         if (err) throw err;
-        if (docs){
+    DAL.UserModel.find({}, (err, docs) => {
+        if (err) throw err;
+        if (docs) {
             console.log('Docs:', docs);
             res.send(docs)
         }
-        else{
+        else {
             res.send({})
         }
 
     });
 
 }
+
 function getUserById(req, res, next) {
     console.log('getUserById', req.params.id);
 
-    let find = DAL.UserModel.find({_id:req.params.id},(err,docs)=>{
+    let find = DAL.UserModel.find({_id: req.params.id}, (err, docs) => {
         if (err) throw err;
-        if (docs){
+        if (docs) {
 
             let optionalParams = docs[0];
             console.log('Doc:', optionalParams);
             res.send(optionalParams)
         }
-        else{
+        else {
             res.send({})
         }
 
@@ -48,13 +52,30 @@ function getUserSettingsByUserId(req, res, next) {
 
 function saveUser(req, res, next) {
     let user = new DAL.UserModel();
-    user.name  = req.body.name;
+    user.name = req.body.name;
+    user.email = req.body.email;
+    user.password = req.body.password;
     user.createdAt = new Date();
-    user.save();
-    res.send(`saveUser id:${user._id}`)
+    let err = validateUser(user);
+    if (err) {
+        res.status(400).send( err["message"]);
+    } else {
+        user.save();
+        res.send(`saveUser id:${user._id}`);
+    }
+
 }
 
-function getUserRoutesByUserId(req, res, next) {
-    console.log('getUserRoutesByUserId', req.params.id);
-    res.send(`getUserRoutesByUserId! ${req.params.id}`)
+function validateUser(user) {
+    const userSchema = {
+        name: Joi.string(),
+        email: Joi.string().email().required(),
+        password: Joi.string().min(6).required()
+    };
+    var error;
+    Joi.validate(user,
+        userSchema, (err, value) => {
+            error =  err;
+        });
+    return error;
 }

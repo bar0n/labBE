@@ -1,10 +1,10 @@
 import * as mongoose from 'mongoose';
 
 let RouteSchema = mongoose.Schema({
-    ids: [Number],
-    pointA: String,
-    pointB: String,
-    descriptioin: String,
+    userId: String,
+    paths: [{latitude : Number,  longitude : Number}],
+    type: String,
+    description: String,
     createdAt: Date // can be auto created http://mongoosejs.com/docs/guide.html#validateBeforeSave
 });
 

@@ -1,5 +1,6 @@
 import {IRestData} from './../../index.interface'
 import {usersControllers} from './User.controller'
+import {routesControllers} from './Route.controller'
 
 export const paths: IRestData[] = [
     /**
@@ -48,7 +49,7 @@ export const paths: IRestData[] = [
         description: 'all repository actions endpoint',
         method: 'get',
         path: `users/:id/routs`,
-        controller: usersControllers.getUserRoutesByUserId
+        controller: routesControllers.getUserRoutesByUserId
     },
 
     {
@@ -57,7 +58,12 @@ export const paths: IRestData[] = [
         path: `users/:id/settings`,
         controller: usersControllers.getUserSettingsByUserId
     },
-
+    {
+        description: 'save routes repository actions endpoint',
+        method: 'post',
+        path: `users/:id/routes`,
+        controller: routesControllers.saveRoutesForUser
+    },
 
     {
         description: 'all repository actions endpoint',

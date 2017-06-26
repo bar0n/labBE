@@ -1,0 +1,38 @@
+<RestClientRequest>
+  <option name="biscuits">
+    <list />
+  </option>
+  <option name="httpMethod" value="POST" />
+  <option name="urlBase" value="http://localhost:8080" />
+  <option name="urlPath" value="/api/v1/users/5947f8154b33c91e18d5193c/routes" />
+  <option name="headers">
+    <list>
+      <KeyValuePair>
+        <option name="key" value="Accept" />
+        <option name="value" value="application/json" />
+      </KeyValuePair>
+      <KeyValuePair>
+        <option name="key" value="Cache-Control" />
+        <option name="value" value="no-cache" />
+      </KeyValuePair>
+      <KeyValuePair>
+        <option name="key" value="content-type" />
+        <option name="value" value="application/json" />
+      </KeyValuePair>
+    </list>
+  </option>
+  <option name="parameters">
+    <list>
+      <KeyValuePair>
+        <option name="key" value="id" />
+        <option name="value" value="5947f8154b33c91e18d5193c" />
+      </KeyValuePair>
+    </list>
+  </option>
+  <option name="parametersEnabled" value="true" />
+  <option name="haveTextToSend" value="true" />
+  <option name="haveFileToSend" value="false" />
+  <option name="isFileUpload" value="false" />
+  <option name="textToSend" value="{     &quot;description&quot;: &quot;SOME DESCRIPTION&quot;,&quot;type&quot;:&quot;TYPEEE&quot;,   &quot;paths&quot;: [     {       &quot;latitude&quot;: 100,       &quot;longitude&quot;: 200     } ,{       &quot;latitude&quot;: 455,       &quot;longitude&quot;: 245400     } ] }" />
+  <option name="filesToSend" value="" />
+</RestClientRequest>
