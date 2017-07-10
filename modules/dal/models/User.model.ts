@@ -6,6 +6,7 @@ let UserSchema = mongoose.Schema({
     email: String,
     password: String,
     routes: [{type: mongoose.Schema.Types.ObjectId, ref: 'Route'}],
+    rolesId: [{type: mongoose.Schema.Types.ObjectId, ref: 'Role'}],
     createdAt: Date // can be auto created http://mongoosejs.com/docs/guide.html#validateBeforeSave
 });
 
@@ -22,6 +23,16 @@ LogSchema.pre('save', function(next) {
 
 UserSchema.statics.getAllOfThem = function (cb) {
     return this.find({}, cb)
+};
+
+UserSchema.statics.removeAll = function (cb) {
+    return this.remove({}, function(err) {
+        if (err) {
+            console.log(err)
+        } else {
+            console.log('success');
+        }
+    });
 };
 
 export const UserModel = function (obj?) {

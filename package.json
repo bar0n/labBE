@@ -6,7 +6,8 @@
   "scripts": {
     "start": "npm run serve",
     "serve": "nodemon --watch *.ts --exec ts-node ./main.ts",
-    "test": "mocha --compilers ts:ts-node/register,tsx:ts-node/register --recursive"
+    "test": "mocha --compilers ts:ts-node/register,tsx:ts-node/register --recursive",
+    "seed": "ts-node ./seeder/seed"
   },
   "author": "",
   "license": "ISC",

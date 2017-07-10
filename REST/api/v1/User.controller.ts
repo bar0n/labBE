@@ -72,7 +72,7 @@ function validateUser(user) {
         email: Joi.string().email().required(),
         password: Joi.string().min(6).required()
     };
-    var error;
+    let error;
     Joi.validate(user,
         userSchema, (err, value) => {
             error =  err;
