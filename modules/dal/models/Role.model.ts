@@ -23,14 +23,15 @@ RoleSchema.statics.getAllOfThem = function (cb) {
     return this.find({}, cb)
 };
 
-RoleSchema.statics.removeAll = function (cb) {
-    return this.remove({}, function(err) {
-        if (err) {
-            console.log(err)
-        } else {
-            console.log('success');
-        }
-    });
+RoleSchema.statics.removeAll = function () {
+    return  this.remove({});
+    //return this.remove();
+   /* return new Promise((resolve,reject)=>{
+        this.remove({}, function() {
+
+        });
+    });*/
+
 };
 
 export const RoleModel = function (obj?) {

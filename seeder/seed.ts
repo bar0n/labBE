@@ -29,9 +29,9 @@ console.log("Removing all from user and role collections!");
 
 //DAL.removeFromRolesAndUsers();
 
-let res = DAL.RoleModel.removeAll();
+let res =  DAL.RoleModel.removeAll();
 
-let res2 =DAL.UserModel.removeAll();
+let res2 = DAL.UserModel.removeAll();
 
 let admin = saveRole("admin");
 let user = saveRole("user");

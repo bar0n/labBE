@@ -8,6 +8,21 @@ import {DAL} from './modules/dal';
 import * as restV1 from './REST/api/v1/index.rest';
 import Promise = ChaiHttp.Promise;
 
+'use strict';
+const { spawn } = require('child_process');
+
+const child = spawn(
+    'node',
+    [
+       'Z:\\java\\javascript\\labsBE\\index_'
+    ], {
+        stdio: ['inherit', 'inherit', 'inherit']
+    }
+);
+child.on('message', () => {
+    console.log('child is running');
+});
+
 let apiServer = new Server(appSettings.port, restV1);
 apiServer.start();
 DAL.init();
